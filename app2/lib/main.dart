@@ -23,23 +23,25 @@ class _MyAppState extends State<MyApp> {
   // uma variável que poderá ser alterada
   int salario = 12000;
 
-  void aumentarSalario(int valor){
+  void aumentarSalario(int valor) {
     setState(() {
       salario = salario + valor;
     });
   }
-  void diminuirSalario(int valor){
+
+  void diminuirSalario(int valor) {
     setState(() {
       salario = salario - valor;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
-            title: const Text('Steteful'),
+            title: const Text('Aplicativo 2'),
           ),
           body: Center(
             child: Column(
@@ -56,14 +58,16 @@ class _MyAppState extends State<MyApp> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                       aumentarSalario(100);
+                        aumentarSalario(100);
                       },
                       child: const Icon(Icons.arrow_upward),
                     ),
-                    SizedBox(width: 50,),
+                    SizedBox(
+                      width: 50,
+                    ),
                     ElevatedButton(
                       onPressed: () {
-                       diminuirSalario(50);
+                        diminuirSalario(50);
                       },
                       child: const Icon(Icons.arrow_downward),
                     ),
