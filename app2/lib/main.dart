@@ -44,16 +44,19 @@ class _MyAppState extends State<MyApp> {
             title: const Text('Aplicativo 2'),
           ),
           body: Center(
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('O salário de ${widget.nome} é $salario'),
+                    Text('O salário de ${widget.nome} é: $salario'),
                   ],
                 ),
+                
                 Row(
+                  
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
@@ -71,6 +74,7 @@ class _MyAppState extends State<MyApp> {
                       },
                       child: const Icon(Icons.arrow_downward),
                     ),
+                    
                   ],
                 ),
               ],

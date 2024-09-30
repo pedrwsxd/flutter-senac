@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: Form(
           key: formKey,
           child: Column(
@@ -87,32 +87,34 @@ class _HomeState extends State<Home> {
               ),
               TextFormField(
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Peso (kg)",
                   labelStyle: TextStyle(color: Colors.green),
                 ),
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: const TextStyle(color: Colors.green, fontSize: 25.0),
                 controller: pesoControle,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Insira seu Peso!";
                   }
+                  return null;
                 },
               ),
               TextFormField(
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Altura (cm)",
                   labelStyle: TextStyle(color: Colors.green),
                 ),
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: const TextStyle(color: Colors.green, fontSize: 25.0),
                 controller: alturaControle,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Insira sua Altura!";
                   }
+                  return null;
                 },
               ),
               //botão
@@ -120,7 +122,7 @@ class _HomeState extends State<Home> {
               Text(
                 infoText,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: const TextStyle(color: Colors.green, fontSize: 25.0),
               ),
 
               DefaultTextStyle(

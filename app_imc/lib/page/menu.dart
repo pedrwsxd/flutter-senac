@@ -1,4 +1,3 @@
-// Crie um steteless chamado Opções
 
 import 'package:app_imc/main.dart';
 import 'package:app_imc/page/sobre.dart';
@@ -27,7 +26,7 @@ class Opcoes extends StatelessWidget {
               child: Text('Menu', style: TextStyle(color: Colors.white),),
             ),
             ListTile(
-              leading: Icon(Icons.calculate, color: Colors.green,),
+              leading: const Icon(Icons.calculate, color: Colors.green,),
               title: const Text(
                 'Calculadora IMC',
                 style: TextStyle(color: Colors.green),
@@ -42,7 +41,7 @@ class Opcoes extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.info, color: Colors.green,),
+              leading: const Icon(Icons.info, color: Colors.green,),
               title: const Text('Sobre', style: TextStyle(color: Colors.green),),
               onTap: () {
                 Navigator.push(
@@ -56,7 +55,7 @@ class Opcoes extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.close, color: Colors.green,),
+              leading: const Icon(Icons.close, color: Colors.green,),
               title: const Text('Fechar', style: TextStyle(color: Colors.green),),
               onTap: () {
                 Navigator.push(
