@@ -24,7 +24,7 @@ class Opcoes extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.green,
               ),
-              child: Text('Menu'),
+              child: Text('Menu', style: TextStyle(color: Colors.white),),
             ),
             ListTile(
               leading: Icon(Icons.calculate, color: Colors.green,),
