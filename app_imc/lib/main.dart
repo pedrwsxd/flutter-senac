@@ -1,8 +1,10 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:app_imc/page/menu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Home(),
+    home: Opcoes(), //Home()
     debugShowCheckedModeBanner: false,
   ));
 }
@@ -114,43 +116,51 @@ class _HomeState extends State<Home> {
                 },
               ),
               //botão
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                child: SizedBox(
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        calculate();
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                    ),
-                    child: const Text(
-                      "Calcular",
-                      style: TextStyle(color: Colors.white, fontSize: 25.0),
-                    ),
-                  ),
-                ),
-              ),
+
               Text(
                 infoText,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
-              )
+              ),
+
+              DefaultTextStyle(
+                style: const TextStyle(
+                  fontSize: 40.0,
+                  fontFamily: 'Horizon',
+                ),
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    RotateAnimatedText('FLAMENGO'),
+                    RotateAnimatedText('O'),
+                    RotateAnimatedText('MELHOR DO MUNDO'),
+                  ],
+                  onTap: () {
+                    print("Tap Event");
+                  },
+                ),
+              ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          
-          child: Text(
-            infoText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.green, fontSize: 25.0),
+        child: // botão
+            SizedBox(
+          height: 10.0,
+          child: ElevatedButton(
+            // chamar agora uma função anonima
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                calculate();
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+            ),
+            child: const Text(
+              "Calcular",
+              style: TextStyle(color: Colors.white, fontSize: 25.0),
+            ),
           ),
         ),
       ),
