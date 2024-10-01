@@ -1,6 +1,7 @@
 
 import 'package:app_imc/main.dart';
 import 'package:app_imc/page/sobre.dart';
+import 'package:app_imc/page/teste.dart';
 import 'package:flutter/material.dart';
 
 class Opcoes extends StatelessWidget {
@@ -10,7 +11,7 @@ class Opcoes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('App Aula Flutter', style: TextStyle(color: Colors.white),),
+        title: const Text('App Flutter', style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
@@ -48,6 +49,20 @@ class Opcoes extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const Sobre(),
+                  ),
+                );
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.app_settings_alt_rounded, color: Colors.green,),
+              title: const Text('Teste', style: TextStyle(color: Colors.green),),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Testee(),
                   ),
                 );
                 // Update the state of the app.

@@ -132,9 +132,9 @@ class _HomeState extends State<Home> {
                 ),
                 child: AnimatedTextKit(
                   animatedTexts: [
-                    RotateAnimatedText('FLAMENGO'),
-                    RotateAnimatedText('O'),
-                    RotateAnimatedText('MELHOR DO MUNDO'),
+                    RotateAnimatedText(''),
+                    RotateAnimatedText(''),
+                    RotateAnimatedText(''),
                   ],
                   onTap: () {
                     print("Tap Event");
@@ -147,24 +147,27 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomAppBar(
         child: // botão
-            SizedBox(
-          height: 10.0,
-          child: ElevatedButton(
-            // chamar agora uma função anonima
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                calculate();
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: SizedBox(
+                        height: 60.0,
+                        child: ElevatedButton(
+              
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  calculate();
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+              ),
+              child: const Text(
+                "Calcular",
+                style: TextStyle(color: Colors.white, fontSize: 25.0),
+              ),
+                        ),
+                      ),
             ),
-            child: const Text(
-              "Calcular",
-              style: TextStyle(color: Colors.white, fontSize: 25.0),
-            ),
-          ),
-        ),
       ),
     );
   }
