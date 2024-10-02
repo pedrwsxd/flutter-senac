@@ -1,5 +1,5 @@
-
-import 'package:app_imc/main.dart';
+import 'package:app_imc/page/home.dart';
+import 'package:app_imc/page/media.dart';
 import 'package:app_imc/page/sobre.dart';
 import 'package:app_imc/page/teste.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +11,16 @@ class Opcoes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('App Flutter', style: TextStyle(color: Colors.white),),
+        title: const Text(
+          'App Flutter',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
         centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Colors.white, // Cor branca para o ícone do menu
+        ),
+        
       ),
       drawer: Drawer(
         child: ListView(
@@ -22,12 +29,22 @@ class Opcoes extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/sol.jpg'),
+                  fit: BoxFit.cover,
+                ),
                 color: Colors.green,
               ),
-              child: Text('Menu', style: TextStyle(color: Colors.white),),
+              child: Text(
+                'Menu',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             ListTile(
-              leading: const Icon(Icons.calculate, color: Colors.green,),
+              leading: const Icon(
+                Icons.calculate,
+                color: Colors.green,
+              ),
               title: const Text(
                 'Calculadora IMC',
                 style: TextStyle(color: Colors.green),
@@ -42,8 +59,34 @@ class Opcoes extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.info, color: Colors.green,),
-              title: const Text('Sobre', style: TextStyle(color: Colors.green),),
+              leading: const Icon(
+                Icons.calculate,
+                color: Colors.green,
+              ),
+              title: const Text(
+                'Calcular Média',
+                style: TextStyle(color: Colors.green),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Media(),
+                  ),
+                );
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.info,
+                color: Colors.green,
+              ),
+              title: const Text(
+                'Sobre',
+                style: TextStyle(color: Colors.green),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -56,8 +99,14 @@ class Opcoes extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.app_settings_alt_rounded, color: Colors.green,),
-              title: const Text('Teste', style: TextStyle(color: Colors.green),),
+              leading: const Icon(
+                Icons.app_settings_alt_rounded,
+                color: Colors.green,
+              ),
+              title: const Text(
+                'Teste',
+                style: TextStyle(color: Colors.green),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -70,8 +119,14 @@ class Opcoes extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.close, color: Colors.green,),
-              title: const Text('Fechar', style: TextStyle(color: Colors.green),),
+              leading: const Icon(
+                Icons.close,
+                color: Colors.green,
+              ),
+              title: const Text(
+                'Fechar',
+                style: TextStyle(color: Colors.green),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
