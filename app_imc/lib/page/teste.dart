@@ -6,11 +6,28 @@ class Testee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      title: Text("LUGAR PARA TESTE", style: TextStyle(color: Colors.red),), 
-      backgroundColor: Colors.white60, 
-      centerTitle: true,
-      ),
-    );
+        appBar: AppBar(
+          title: Text(
+            "LUGAR PARA TESTE",
+            style: TextStyle(color: const Color.fromARGB(255, 88, 6, 0)),
+          ),
+          backgroundColor: Colors.white,
+          centerTitle: true,
+        ),
+        backgroundColor: Colors.black,
+        body: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
+            Center(
+              child: Text(
+                "Hello Word",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
