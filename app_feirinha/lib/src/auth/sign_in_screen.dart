@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:app_feirinha/src/auth/sign_up_screen.dart';
 import 'package:app_feirinha/src/components/custom_text_field.dart';
 import 'package:app_feirinha/src/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class SignInScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Entrada"),
+        title: const Text("Entrada"),
       ),
       backgroundColor: Colors.green,
       body: Column(
@@ -152,7 +153,7 @@ class SignInScreen extends StatelessWidget {
                           // Captura os valores dos campos de email e senha
                           String email = emailController.text.trim();
                           String senha = senhaController.text.trim();
-    
+
                           // Verifica se os campos estão preenchidos
                           if (email.isNotEmpty && senha.isNotEmpty) {
                             loginUser(email, senha, context);
@@ -208,7 +209,14 @@ class SignInScreen extends StatelessWidget {
                             color: Colors.green,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpScreen(),
+                            ),
+                          );
+                        },
                         child: const Text('Criar conta'),
                       ),
                     ),
