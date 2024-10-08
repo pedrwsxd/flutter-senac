@@ -10,8 +10,9 @@ class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
   // Função para realizar o login
-  Future<void> loginUser(String email, String senha, BuildContext context) async {
-    final url = Uri.parse('http://localhost:8080/user/login'); // API de login
+  Future<void> loginUser(
+      String email, String senha, BuildContext context) async {
+    final url = Uri.parse('http://10.0.2.2:8080/user/login'); // API de login
 
     try {
       final response = await http.post(
@@ -112,94 +113,107 @@ class SignInScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 40,
-              ),
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(45),
-                  )),
-              child: Column(
-                children: [
-                  //Email
-                  CustomTextField(
-                    icon: Icons.email,
-                    label: 'Email',
-                    controller: emailController,
-                  ),
-                  //Senha
-                  CustomTextField(
-                    icon: Icons.lock,
-                    label: 'Senha',
-                    isSecret: true,
-                    controller: senhaController,
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
+          SingleChildScrollView(
+            child: Expanded(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 40,
+                ),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(45),
+                    )),
+                child: Column(
+                  children: [
+                    //Email
+                    CustomTextField(
+                      icon: Icons.email,
+                      label: 'Email',
+                      controller: emailController,
+                    ),
+                    //Senha
+                    CustomTextField(
+                      icon: Icons.lock,
+                      label: 'Senha',
+                      isSecret: true,
+                      controller: senhaController,
+                    ),
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        // Comparação de dados
-                        String email = emailController.text;
-                        String senha = senhaController.text;
-                        loginUser(email, senha, context);
-                      },
-                      child: const Text(
-                        'Entrar',
-                        style: TextStyle(
-                          fontSize: 18,
+                        onPressed: () {
+                          // Captura os valores dos campos de email e senha
+                          String email = emailController.text.trim();
+                          String senha = senhaController.text.trim();
+    
+                          // Verifica se os campos estão preenchidos
+                          if (email.isNotEmpty && senha.isNotEmpty) {
+                            loginUser(email, senha, context);
+                          } else {
+                            print('Campos de email ou senha estão vazios.');
+                            // Exibe uma mensagem para o usuário
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Preencha todos os campos!')),
+                            );
+                          }
+                        },
+                        child: const Text(
+                          'Entrar',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: Colors.grey.withAlpha(90),
-                          thickness: 2,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            color: Colors.grey.withAlpha(90),
+                            thickness: 2,
+                          ),
                         ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Text('Ou'),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.grey.withAlpha(90),
-                          thickness: 2,
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Text('Ou'),
                         ),
-                      ),
-                    ],
-                  ),
-                  // Botão de cadastro
-                  // Botão com linhas de borda
-                  SizedBox(
-                    height: 50,
-                    child: OutlinedButton(
-                      //formatação do botão
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
+                        Expanded(
+                          child: Divider(
+                            color: Colors.grey.withAlpha(90),
+                            thickness: 2,
+                          ),
                         ),
-                        side: const BorderSide(
-                          width: 2,
-                          color: Colors.green,
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: const Text('Criar conta'),
+                      ],
                     ),
-                  ),
-                ],
+                    // Botão de cadastro
+                    // Botão com linhas de borda
+                    SizedBox(
+                      height: 50,
+                      child: OutlinedButton(
+                        //formatação do botão
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          side: const BorderSide(
+                            width: 2,
+                            color: Colors.green,
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: const Text('Criar conta'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
