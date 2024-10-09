@@ -12,7 +12,7 @@ class SignUpScreen extends StatelessWidget {
 
   // Função para criar um novo usuário
   Future<void> registerUser(String email, String senha, BuildContext context) async {
-    final url = Uri.parse('http://localhost:8080/user/register'); // URL para a API de registro
+    final url = Uri.parse('http://10.0.2.2:8080/user/register'); // URL para a API de registro
 
     try {
       final response = await http.post(
@@ -104,104 +104,102 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
           SingleChildScrollView(
-            child: Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                  vertical: 40,
-                ),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(45),
-                    )),
-                child: Column(
-                  children: [
-                    //Email
-                    CustomTextField(
-                      icon: Icons.email,
-                      label: 'Email',
-                      controller: emailController,
-                    ),
-                    //Senha
-                    CustomTextField(
-                      icon: Icons.lock,
-                      label: 'Senha',
-                      isSecret: true,
-                      controller: senhaController,
-                    ),
-                    SizedBox(
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                          ),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 32,
+                vertical: 40,
+              ),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(45),
+                  )),
+              child: Column(
+                children: [
+                  //Email
+                  CustomTextField(
+                    icon: Icons.email,
+                    label: 'Email',
+                    controller: emailController,
+                  ),
+                  //Senha
+                  CustomTextField(
+                    icon: Icons.lock,
+                    label: 'Senha',
+                    isSecret: true,
+                    controller: senhaController,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
                         ),
-                        onPressed: () {
-                          // Captura os valores dos campos de email e senha
-                          String email = emailController.text.trim();
-                          String senha = senhaController.text.trim();
-                          registerUser(email, senha, context);
-                          
-                          
-                        },
-                        child: const Text(
-                          'Cadastrar',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
+                      ),
+                      onPressed: () {
+                        // Captura os valores dos campos de email e senha
+                        String email = emailController.text.trim();
+                        String senha = senhaController.text.trim();
+                        registerUser(email, senha, context);
+                        
+                        
+                      },
+                      child: const Text(
+                        'Cadastrar',
+                        style: TextStyle(
+                          fontSize: 18,
                         ),
                       ),
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.withAlpha(90),
-                            thickness: 2,
-                          ),
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey.withAlpha(90),
+                          thickness: 2,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text('Ou'),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.withAlpha(90),
-                            thickness: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                    // Botão de cadastro
-                    // Botão com linhas de borda
-                    SizedBox(
-                      height: 50,
-                      child: OutlinedButton(
-                        //formatação do botão
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          side: const BorderSide(
-                            width: 2,
-                            color: Colors.green,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignInScreen(),
-                            ),
-                          );
-                        },
-                        child: const Text('Já sou cadastrado'),
                       ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Text('Ou'),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey.withAlpha(90),
+                          thickness: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Botão de cadastro
+                  // Botão com linhas de borda
+                  SizedBox(
+                    height: 50,
+                    child: OutlinedButton(
+                      //formatação do botão
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        side: const BorderSide(
+                          width: 2,
+                          color: Colors.green,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignInScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text('Já sou cadastrado'),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
