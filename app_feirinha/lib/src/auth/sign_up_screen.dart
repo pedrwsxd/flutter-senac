@@ -12,7 +12,7 @@ class SignUpScreen extends StatelessWidget {
 
   // Função para criar um novo usuário
   Future<void> registerUser(String email, String senha, BuildContext context) async {
-    final url = Uri.parse('http://10.0.2.2:8080/user/register'); // URL para a API de registro
+    final url = Uri.parse('http://localhost:8080/user/register'); // URL para a API de registro
 
     try {
       final response = await http.post(
@@ -131,8 +131,11 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 50,
+                    width: 500,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         ),
@@ -177,6 +180,7 @@ class SignUpScreen extends StatelessWidget {
                   // Botão com linhas de borda
                   SizedBox(
                     height: 50,
+                    width: 500,
                     child: OutlinedButton(
                       //formatação do botão
                       style: OutlinedButton.styleFrom(
