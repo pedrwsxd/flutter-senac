@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:app_feirinha/src/auth/sign_up_screen.dart';
 import 'package:app_feirinha/src/components/custom_text_field.dart';
+import 'package:app_feirinha/src/home/home_bebida.dart';
 import 'package:app_feirinha/src/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class SignInScreen extends StatelessWidget {
         // Navegar para a nova tela HomeScreen
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeBebida()),
         );
       } else {
         // login falhou
