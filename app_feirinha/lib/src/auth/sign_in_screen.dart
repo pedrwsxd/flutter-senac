@@ -30,7 +30,7 @@ class SignInScreen extends StatelessWidget {
         // Navegar para a nova tela HomeScreen
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const HomeBebida()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
       } else {
         // login falhou

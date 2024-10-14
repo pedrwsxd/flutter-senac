@@ -1,3 +1,4 @@
+import 'package:app_feirinha/src/home/carrinho_screen.dart';
 import 'package:app_feirinha/src/models/produto.dart';
 import 'package:app_feirinha/src/service/produto_service.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +12,37 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Produto>> futureProdutos;
+  Map<Produto, int> carrinho = {};
 /*
-A palavra-chave late em Dart é usada para declarar uma variável que será inicializada mais tarde, ou seja, 
-não no momento de sua declaração, mas antes de ser acessada pela primeira 
-vez. Isso é útil quando você tem certeza de que a variável será inicializada antes de ser usada, 
-mas não pode inicializá-la imediatamente, por exemplo, durante a criação de uma classe ou em métodos assíncronos.
+A palavra-chave late em Dart é usada para declarar uma variável que será inicializada mais tarde, ou seja, não no momento de sua declaração, mas antes de ser acessada pela primeira vez. Isso é útil quando você tem certeza de que a variável será inicializada antes de ser usada, mas não pode inicializá-la imediatamente, por exemplo, durante a criação de uma classe ou em métodos assíncronos.
 */
 
   @override
   void initState() {
     super.initState();
     futureProdutos = ProdutoService().fetchProdutos();
+  }
+
+  void adicionarAoCarrinho(Produto produto) {
+    setState(() {
+      if (carrinho.containsKey(produto)){
+        
+        carrinho[produto] = carrinho[produto]! + 1;
+      } else {
+        carrinho[produto] = 1;
+      }
+    });
+  }
+
+  void removerDoCarrinho(Produto produto) {
+    setState(() {
+      if (carrinho.containsKey(produto) && carrinho[produto]! > 0){
+        carrinho[produto] = carrinho[produto]! - 1;
+        if (carrinho[produto] == 0) {
+          carrinho.remove(produto);
+        }
+      }
+    });
   }
 
   // Função para separar os produtos por categoria
@@ -42,6 +63,21 @@ mas não pode inicializá-la imediatamente, por exemplo, durante a criação de 
     return Scaffold(
       appBar: AppBar(
         title: Text('Produtos da Feirinha'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CarrinhoScreen(
+                    carrinho: carrinho,
+                  ),
+                ),
+              );
+            },
+            icon: Icon(Icons.shopping_cart),
+          ),
+        ],
       ),
       body: FutureBuilder<List<Produto>>(
         future: futureProdutos,
@@ -77,6 +113,15 @@ mas não pode inicializá-la imediatamente, por exemplo, durante a criação de 
                             title: Text(produto.nome),
                             subtitle: Text(
                                 'Preço: R\$${produto.preco.toStringAsFixed(2)}'),
+                            // Inserindo botão do carrinho
+                            trailing: IconButton(
+                              icon: Icon(Icons.add_shopping_cart),
+                              onPressed: () {
+                                adicionarAoCarrinho(produto);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(
+                                    '${produto.nome} adicionado ao carrinho!'),),
+                            },),
                           ),
                         );
                       }).toList(),
