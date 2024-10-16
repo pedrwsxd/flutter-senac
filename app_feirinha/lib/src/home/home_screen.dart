@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Produto>> futureProdutos;
+
   Map<Produto, int> carrinho = {};
 /*
 A palavra-chave late em Dart é usada para declarar uma variável que será inicializada mais tarde, ou seja, não no momento de sua declaração, mas antes de ser acessada pela primeira vez. Isso é útil quando você tem certeza de que a variável será inicializada antes de ser usada, mas não pode inicializá-la imediatamente, por exemplo, durante a criação de uma classe ou em métodos assíncronos.
@@ -25,8 +26,7 @@ A palavra-chave late em Dart é usada para declarar uma variável que será inic
 
   void adicionarAoCarrinho(Produto produto) {
     setState(() {
-      if (carrinho.containsKey(produto)){
-        
+      if (carrinho.containsKey(produto)) {
         carrinho[produto] = carrinho[produto]! + 1;
       } else {
         carrinho[produto] = 1;
@@ -36,7 +36,7 @@ A palavra-chave late em Dart é usada para declarar uma variável que será inic
 
   void removerDoCarrinho(Produto produto) {
     setState(() {
-      if (carrinho.containsKey(produto) && carrinho[produto]! > 0){
+      if (carrinho.containsKey(produto) && carrinho[produto]! > 0) {
         carrinho[produto] = carrinho[produto]! - 1;
         if (carrinho[produto] == 0) {
           carrinho.remove(produto);
@@ -111,17 +111,48 @@ A palavra-chave late em Dart é usada para declarar uma variável que será inic
                             leading: Image.network(
                                 produto.imagemUrl), // Exibe a imagem do produto
                             title: Text(produto.nome),
-                            subtitle: Text(
-                                'Preço: R\$${produto.preco.toStringAsFixed(2)}'),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    'Preço: R\$${produto.preco.toStringAsFixed(2)}'),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        removerDoCarrinho(produto);
+                                      },
+                                      icon: Icon(
+                                        Icons.remove,
+                                      ),
+                                    ),
+                                    Text(
+                                      carrinho[produto]?.toString() ?? '0',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        adicionarAoCarrinho(produto);
+                                      },
+                                      icon: Icon(Icons.add),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                             // Inserindo botão do carrinho
                             trailing: IconButton(
                               icon: Icon(Icons.add_shopping_cart),
                               onPressed: () {
                                 adicionarAoCarrinho(produto);
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(
-                                    '${produto.nome} adicionado ao carrinho!'),),
-                            },),
+                                  SnackBar(
+                                    content: Text(
+                                        '${produto.nome} adicionado ao carrinho!'),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         );
                       }).toList(),
