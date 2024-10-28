@@ -56,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextSpan(
                         text: 'Churros',
                         style: TextStyle(
-                          color: Colors.pink,
+                          color: Color.fromARGB(255, 255, 0, 191),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -167,7 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         side: const BorderSide(
                           width: 2,
-                          color: Colors.green,
+                          color: Colors.purple,
                         ),
                       ),
                       onPressed: () {

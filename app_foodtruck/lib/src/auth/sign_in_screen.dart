@@ -19,7 +19,7 @@ class SignInScreen extends StatelessWidget {
     TextEditingController senhaController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.purple,
       body: Column(
         children: [
           Expanded(
@@ -42,7 +42,7 @@ class SignInScreen extends StatelessWidget {
                       TextSpan(
                         text: 'Churros',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 236, 10, 180),
+                          color: Color.fromARGB(255, 255, 0, 191),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -103,7 +103,7 @@ class SignInScreen extends StatelessWidget {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.green,
+                          backgroundColor: Colors.purple,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                           ),
@@ -161,7 +161,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                           side: const BorderSide(
                             width: 2,
-                            color: Colors.green,
+                            color: Colors.purple,
                           ),
                         ),
                         onPressed: () {
